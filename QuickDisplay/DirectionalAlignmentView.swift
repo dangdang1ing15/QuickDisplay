@@ -12,7 +12,7 @@ struct DirectionalAlignmentView: View {
             } else {
                 VStack {
                     Spacer()
-                    Text("디스플레이가 연결되어있지 않습니다.")
+                    Text("연결된 디스플레이가 없습니다.")
                         .font(.title3)
                         .foregroundColor(.secondary)
                     Spacer()

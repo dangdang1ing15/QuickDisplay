@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0905B9CF2DFC9BA500B5E166 /* QuickDisplayHelper.app in Copy Files */ = {isa = PBXBuildFile; fileRef = 09C20DB12DFC935100314B19 /* QuickDisplayHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		09C20D622DFC719E00314B19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +25,54 @@
 			remoteGlobalIDString = 09C20D522DFC719D00314B19;
 			remoteInfo = QuickDisplay;
 		};
+		09C20DBF2DFC935200314B19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09C20D4B2DFC719D00314B19 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09C20DB02DFC935100314B19;
+			remoteInfo = QuickDisplayHelper;
+		};
+		09C20DC92DFC935200314B19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09C20D4B2DFC719D00314B19 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09C20DB02DFC935100314B19;
+			remoteInfo = QuickDisplayHelper;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0905B9CE2DFC9B8500B5E166 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				0905B9CF2DFC9BA500B5E166 /* QuickDisplayHelper.app in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		09C20D532DFC719D00314B19 /* QuickDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C20D612DFC719E00314B19 /* QuickDisplayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickDisplayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C20D6B2DFC719E00314B19 /* QuickDisplayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickDisplayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		09C20DB12DFC935100314B19 /* QuickDisplayHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickDisplayHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09C20DBE2DFC935200314B19 /* QuickDisplayHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickDisplayHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		09C20DC82DFC935200314B19 /* QuickDisplayHelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickDisplayHelperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		09C20DDA2DFC939200314B19 /* Exceptions for "QuickDisplayHelper" folder in "QuickDisplayHelper" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 09C20DB02DFC935100314B19 /* QuickDisplayHelper */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		09C20D552DFC719D00314B19 /* QuickDisplay */ = {
@@ -43,6 +88,24 @@
 		09C20D6E2DFC719E00314B19 /* QuickDisplayUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = QuickDisplayUITests;
+			sourceTree = "<group>";
+		};
+		09C20DB22DFC935100314B19 /* QuickDisplayHelper */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				09C20DDA2DFC939200314B19 /* Exceptions for "QuickDisplayHelper" folder in "QuickDisplayHelper" target */,
+			);
+			path = QuickDisplayHelper;
+			sourceTree = "<group>";
+		};
+		09C20DC12DFC935200314B19 /* QuickDisplayHelperTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = QuickDisplayHelperTests;
+			sourceTree = "<group>";
+		};
+		09C20DCB2DFC935200314B19 /* QuickDisplayHelperUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = QuickDisplayHelperUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +132,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		09C20DAE2DFC935100314B19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09C20DBB2DFC935200314B19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09C20DC52DFC935200314B19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +162,9 @@
 				09C20D552DFC719D00314B19 /* QuickDisplay */,
 				09C20D642DFC719E00314B19 /* QuickDisplayTests */,
 				09C20D6E2DFC719E00314B19 /* QuickDisplayUITests */,
+				09C20DB22DFC935100314B19 /* QuickDisplayHelper */,
+				09C20DC12DFC935200314B19 /* QuickDisplayHelperTests */,
+				09C20DCB2DFC935200314B19 /* QuickDisplayHelperUITests */,
 				09C20D542DFC719D00314B19 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +175,9 @@
 				09C20D532DFC719D00314B19 /* QuickDisplay.app */,
 				09C20D612DFC719E00314B19 /* QuickDisplayTests.xctest */,
 				09C20D6B2DFC719E00314B19 /* QuickDisplayUITests.xctest */,
+				09C20DB12DFC935100314B19 /* QuickDisplayHelper.app */,
+				09C20DBE2DFC935200314B19 /* QuickDisplayHelperTests.xctest */,
+				09C20DC82DFC935200314B19 /* QuickDisplayHelperUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,6 +192,7 @@
 				09C20D4F2DFC719D00314B19 /* Sources */,
 				09C20D502DFC719D00314B19 /* Frameworks */,
 				09C20D512DFC719D00314B19 /* Resources */,
+				0905B9CE2DFC9B8500B5E166 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -163,6 +254,74 @@
 			productReference = 09C20D6B2DFC719E00314B19 /* QuickDisplayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		09C20DB02DFC935100314B19 /* QuickDisplayHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09C20DD62DFC935200314B19 /* Build configuration list for PBXNativeTarget "QuickDisplayHelper" */;
+			buildPhases = (
+				09C20DAD2DFC935100314B19 /* Sources */,
+				09C20DAE2DFC935100314B19 /* Frameworks */,
+				09C20DAF2DFC935100314B19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				09C20DB22DFC935100314B19 /* QuickDisplayHelper */,
+			);
+			name = QuickDisplayHelper;
+			packageProductDependencies = (
+			);
+			productName = QuickDisplayHelper;
+			productReference = 09C20DB12DFC935100314B19 /* QuickDisplayHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		09C20DBD2DFC935200314B19 /* QuickDisplayHelperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09C20DD72DFC935200314B19 /* Build configuration list for PBXNativeTarget "QuickDisplayHelperTests" */;
+			buildPhases = (
+				09C20DBA2DFC935200314B19 /* Sources */,
+				09C20DBB2DFC935200314B19 /* Frameworks */,
+				09C20DBC2DFC935200314B19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				09C20DC02DFC935200314B19 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				09C20DC12DFC935200314B19 /* QuickDisplayHelperTests */,
+			);
+			name = QuickDisplayHelperTests;
+			packageProductDependencies = (
+			);
+			productName = QuickDisplayHelperTests;
+			productReference = 09C20DBE2DFC935200314B19 /* QuickDisplayHelperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		09C20DC72DFC935200314B19 /* QuickDisplayHelperUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09C20DD82DFC935200314B19 /* Build configuration list for PBXNativeTarget "QuickDisplayHelperUITests" */;
+			buildPhases = (
+				09C20DC42DFC935200314B19 /* Sources */,
+				09C20DC52DFC935200314B19 /* Frameworks */,
+				09C20DC62DFC935200314B19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				09C20DCA2DFC935200314B19 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				09C20DCB2DFC935200314B19 /* QuickDisplayHelperUITests */,
+			);
+			name = QuickDisplayHelperUITests;
+			packageProductDependencies = (
+			);
+			productName = QuickDisplayHelperUITests;
+			productReference = 09C20DC82DFC935200314B19 /* QuickDisplayHelperUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +343,17 @@
 						CreatedOnToolsVersion = 16.3;
 						TestTargetID = 09C20D522DFC719D00314B19;
 					};
+					09C20DB02DFC935100314B19 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					09C20DBD2DFC935200314B19 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 09C20DB02DFC935100314B19;
+					};
+					09C20DC72DFC935200314B19 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 09C20DB02DFC935100314B19;
+					};
 				};
 			};
 			buildConfigurationList = 09C20D4E2DFC719D00314B19 /* Build configuration list for PBXProject "QuickDisplay" */;
@@ -203,6 +373,9 @@
 				09C20D522DFC719D00314B19 /* QuickDisplay */,
 				09C20D602DFC719E00314B19 /* QuickDisplayTests */,
 				09C20D6A2DFC719E00314B19 /* QuickDisplayUITests */,
+				09C20DB02DFC935100314B19 /* QuickDisplayHelper */,
+				09C20DBD2DFC935200314B19 /* QuickDisplayHelperTests */,
+				09C20DC72DFC935200314B19 /* QuickDisplayHelperUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +396,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		09C20D692DFC719E00314B19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09C20DAF2DFC935100314B19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09C20DBC2DFC935200314B19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09C20DC62DFC935200314B19 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +447,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		09C20DAD2DFC935100314B19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09C20DBA2DFC935200314B19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09C20DC42DFC935200314B19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +480,16 @@
 			isa = PBXTargetDependency;
 			target = 09C20D522DFC719D00314B19 /* QuickDisplay */;
 			targetProxy = 09C20D6C2DFC719E00314B19 /* PBXContainerItemProxy */;
+		};
+		09C20DC02DFC935200314B19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09C20DB02DFC935100314B19 /* QuickDisplayHelper */;
+			targetProxy = 09C20DBF2DFC935200314B19 /* PBXContainerItemProxy */;
+		};
+		09C20DCA2DFC935200314B19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09C20DB02DFC935100314B19 /* QuickDisplayHelper */;
+			targetProxy = 09C20DC92DFC935200314B19 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -513,6 +738,134 @@
 			};
 			name = Release;
 		};
+		09C20DD02DFC935200314B19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QuickDisplayHelper/QuickDisplayHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9WPZ5669L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickDisplayHelper/Info.plist;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ElianisBack.QuickDisplayHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		09C20DD12DFC935200314B19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QuickDisplayHelper/QuickDisplayHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9WPZ5669L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickDisplayHelper/Info.plist;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ElianisBack.QuickDisplayHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		09C20DD22DFC935200314B19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9WPZ5669L;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ElianisBack.QuickDisplayHelperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickDisplayHelper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickDisplayHelper";
+			};
+			name = Debug;
+		};
+		09C20DD32DFC935200314B19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9WPZ5669L;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ElianisBack.QuickDisplayHelperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuickDisplayHelper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuickDisplayHelper";
+			};
+			name = Release;
+		};
+		09C20DD42DFC935200314B19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9WPZ5669L;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ElianisBack.QuickDisplayHelperUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = QuickDisplayHelper;
+			};
+			name = Debug;
+		};
+		09C20DD52DFC935200314B19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9WPZ5669L;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ElianisBack.QuickDisplayHelperUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = QuickDisplayHelper;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -548,6 +901,33 @@
 			buildConfigurations = (
 				09C20D7C2DFC719E00314B19 /* Debug */,
 				09C20D7D2DFC719E00314B19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09C20DD62DFC935200314B19 /* Build configuration list for PBXNativeTarget "QuickDisplayHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09C20DD02DFC935200314B19 /* Debug */,
+				09C20DD12DFC935200314B19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09C20DD72DFC935200314B19 /* Build configuration list for PBXNativeTarget "QuickDisplayHelperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09C20DD22DFC935200314B19 /* Debug */,
+				09C20DD32DFC935200314B19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09C20DD82DFC935200314B19 /* Build configuration list for PBXNativeTarget "QuickDisplayHelperUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09C20DD42DFC935200314B19 /* Debug */,
+				09C20DD52DFC935200314B19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

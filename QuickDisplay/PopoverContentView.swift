@@ -5,6 +5,8 @@ struct PopoverContentView: View {
         VStack {
             DirectionalAlignmentView()
             
+            AutoLaunchToggleView()
+            
             Button(action: {
                 NSApp.terminate(nil)
             }) {
@@ -14,7 +16,20 @@ struct PopoverContentView: View {
             }
             .buttonStyle(BorderlessButtonStyle())
         }
-        .allowsHitTesting(false)
-        .frame(width: 230, height: 250)
+        .frame(width: 230, height: 300)
     }
 }
+
+struct AutoLaunchToggleView: View {
+    @State private var autoLaunchEnabled = false
+
+    var body: some View {
+        Toggle("자동 실행", isOn: $autoLaunchEnabled)
+            .onChange(of: autoLaunchEnabled) { newValue in
+                LoginItemManager.setLoginItem(enabled: newValue)
+            }
+            .padding()
+            .onAppear {}
+    }
+}
+
