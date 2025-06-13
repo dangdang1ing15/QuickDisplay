@@ -1,9 +1,36 @@
 import SwiftUI
+import CoreGraphics
 
 struct DirectionalAlignmentView: View {
+    @StateObject private var monitor = ExternalDisplayMonitor()
     @State private var selectedDirection: DisplayAlignmentDirection?
 
     var body: some View {
+        ZStack {
+            if monitor.isExternalDisplayConnected {
+                alignmentUI
+            } else {
+                VStack {
+                    Spacer()
+                    Text("디스플레이가 연결되어있지 않습니다.")
+                        .font(.title3)
+                        .foregroundColor(.secondary)
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.gray.opacity(0.1))
+            }
+        }
+        .onAppear {
+            if selectedDirection == nil, monitor.isExternalDisplayConnected {
+                selectedDirection = detectExternalDisplayDirection()
+            }
+        }
+        .padding()
+        .frame(width: 280, height: 280)
+    }
+
+    var alignmentUI: some View {
         VStack(spacing: 12) {
             displayThumbnail(direction: .top, systemImage: "arrow.up.circle.fill", label: "위쪽")
 
@@ -25,13 +52,6 @@ struct DirectionalAlignmentView: View {
 
             displayThumbnail(direction: .bottom, systemImage: "arrow.down.circle.fill", label: "아래쪽")
         }
-        .onAppear {
-            if selectedDirection == nil {
-                selectedDirection = detectExternalDisplayDirection()
-            }
-        }
-        .padding()
-        .frame(width: 280, height: 280)
     }
 
     func detectExternalDisplayDirection() -> DisplayAlignmentDirection? {
@@ -63,7 +83,9 @@ struct DirectionalAlignmentView: View {
         let isSelected = selectedDirection == direction
 
         Button(action: {
-            selectedDirection = direction
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                selectedDirection = direction
+            }
             try? DisplayManager.alignExternalDisplay(relativeTo: direction)
         }) {
             VStack(spacing: 6) {
@@ -71,12 +93,14 @@ struct DirectionalAlignmentView: View {
                     RoundedRectangle(cornerRadius: 6)
                         .frame(width: 48, height: 30)
                         .foregroundColor(isSelected ? .blue.opacity(0.7) : .gray.opacity(0.3))
+                        .scaleEffect(isSelected ? 1.05 : 1.0)
 
                     Image(systemName: systemImage)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 16, height: 16)
                         .foregroundColor(isSelected ? .white : .gray)
+                        .scaleEffect(isSelected ? 1.1 : 1.0)
                 }
 
                 Text(label)
