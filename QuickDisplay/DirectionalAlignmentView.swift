@@ -26,10 +26,10 @@ struct DirectionalAlignmentView: View {
             displayThumbnail(direction: .bottom, systemImage: "arrow.down.circle.fill", label: "아래쪽")
         }
         .onAppear {
-                if selectedDirection == nil {
-                    selectedDirection = detectExternalDisplayDirection()
-                }
+            if selectedDirection == nil {
+                selectedDirection = detectExternalDisplayDirection()
             }
+        }
         .padding()
         .frame(width: 280, height: 280)
     }
@@ -57,15 +57,13 @@ struct DirectionalAlignmentView: View {
             return deltaY < 0 ? .top : .bottom
         }
     }
-    
+
     @ViewBuilder
     private func displayThumbnail(direction: DisplayAlignmentDirection, systemImage: String, label: String) -> some View {
         let isSelected = selectedDirection == direction
 
         Button(action: {
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
-                selectedDirection = direction
-            }
+            selectedDirection = direction
             try? DisplayManager.alignExternalDisplay(relativeTo: direction)
         }) {
             VStack(spacing: 6) {
@@ -73,16 +71,12 @@ struct DirectionalAlignmentView: View {
                     RoundedRectangle(cornerRadius: 6)
                         .frame(width: 48, height: 30)
                         .foregroundColor(isSelected ? .blue.opacity(0.7) : .gray.opacity(0.3))
-                        .scaleEffect(isSelected ? 1.05 : 1.0) // ⬅️ 강조 확대 효과
-                        .animation(.easeInOut(duration: 0.2), value: isSelected)
 
                     Image(systemName: systemImage)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 16, height: 16)
                         .foregroundColor(isSelected ? .white : .gray)
-                        .scaleEffect(isSelected ? 1.1 : 1.0)
-                        .animation(.easeInOut(duration: 0.2), value: isSelected)
                 }
 
                 Text(label)

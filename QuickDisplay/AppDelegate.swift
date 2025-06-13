@@ -12,15 +12,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem?.button {
             button.image = NSImage(systemSymbolName: "rectangle.split.3x1.fill", accessibilityDescription: "Aligner")
             button.action = #selector(togglePopover(_:))
+            button.target = self
         }
 
         popover = NSPopover()
-        popover?.contentSize = NSSize(width: 240, height: 260)
+        popover?.contentSize = NSSize(width: 280, height: 280)
         popover?.behavior = .transient
         popover?.animates = true
         popover?.contentViewController = NSHostingController(rootView: DirectionalAlignmentView())
+
+        DisplayMonitor.shared.startMonitoring(openView: {
+            WindowPresenter.shared.showAlignmentWindow()
+        })
     }
 
+    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
+        return false
+    }
+    
     @objc func togglePopover(_ sender: AnyObject?) {
         guard let button = statusItem?.button else { return }
         if let popover = popover {
