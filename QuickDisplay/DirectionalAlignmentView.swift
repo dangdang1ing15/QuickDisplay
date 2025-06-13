@@ -25,10 +25,39 @@ struct DirectionalAlignmentView: View {
 
             displayThumbnail(direction: .bottom, systemImage: "arrow.down.circle.fill", label: "아래쪽")
         }
+        .onAppear {
+                if selectedDirection == nil {
+                    selectedDirection = detectExternalDisplayDirection()
+                }
+            }
         .padding()
         .frame(width: 280, height: 280)
     }
 
+    func detectExternalDisplayDirection() -> DisplayAlignmentDirection? {
+        var displayCount: UInt32 = 0
+        CGGetActiveDisplayList(0, nil, &displayCount)
+        var displays = [CGDirectDisplayID](repeating: 0, count: Int(displayCount))
+        CGGetActiveDisplayList(displayCount, &displays, nil)
+
+        guard let main = displays.first(where: { CGDisplayIsBuiltin($0) == 1 }),
+              let external = displays.first(where: { CGDisplayIsBuiltin($0) == 0 }) else {
+            return nil
+        }
+
+        let mainBounds = CGDisplayBounds(main)
+        let extBounds = CGDisplayBounds(external)
+
+        let deltaX = extBounds.origin.x - mainBounds.origin.x
+        let deltaY = extBounds.origin.y - mainBounds.origin.y
+
+        if abs(deltaX) > abs(deltaY) {
+            return deltaX < 0 ? .left : .right
+        } else {
+            return deltaY < 0 ? .top : .bottom
+        }
+    }
+    
     @ViewBuilder
     private func displayThumbnail(direction: DisplayAlignmentDirection, systemImage: String, label: String) -> some View {
         let isSelected = selectedDirection == direction
