@@ -7,8 +7,16 @@ final class WindowPresenter: NSObject, NSWindowDelegate {
     private var window: NSWindow?
     private var hostingController: NSHostingController<DirectionalAlignmentView>?
 
+    private var panel: NSPanel?
+    private var panelHostingView: NSHostingView<PopoverContentView>?
+
+    // MARK: - 일반 윈도우 (DirectionalAlignmentView)
     func showAlignmentWindow() {
-        guard window == nil else { return }
+        if window != nil {
+            window?.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+            return
+        }
 
         let controller = NSHostingController(rootView: DirectionalAlignmentView())
         self.hostingController = controller
@@ -21,12 +29,11 @@ final class WindowPresenter: NSObject, NSWindowDelegate {
         )
 
         win.title = "디스플레이 정렬"
-        win.isReleasedWhenClosed = false // 수동 해제
-        win.isRestorable = false         // 복원 비활성화
+        win.isReleasedWhenClosed = false
+        win.isRestorable = false
         win.delegate = self
         win.contentViewController = controller
 
-        // ✅ 정확한 내장 디스플레이 정중앙 위치 계산
         if let screen = NSScreen.screens.first(where: {
             $0.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID == CGMainDisplayID()
         }) {
@@ -43,17 +50,55 @@ final class WindowPresenter: NSObject, NSWindowDelegate {
 
         self.window = win
 
-        // ✅ 창 띄우기 전 포그라운드 활성화 필수
         NSApp.activate(ignoringOtherApps: true)
         win.makeKeyAndOrderFront(nil)
     }
 
     func windowWillClose(_ notification: Notification) {
-        // ✅ 안전한 수동 해제
-        window?.orderOut(nil)
-        window?.delegate = nil
-        window?.contentViewController = nil
-        hostingController = nil
-        window = nil
+        if let win = notification.object as? NSWindow, win == window {
+            window?.orderOut(nil)
+            window?.delegate = nil
+            window?.contentViewController = nil
+            hostingController = nil
+            window = nil
+        }
+    }
+
+    // MARK: - 패널 (PopoverContentView)
+    func showPopoverWindow() {
+        if panel != nil {
+            panel?.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+            return
+        }
+
+        let contentView = NSHostingView(rootView: PopoverContentView())
+        self.panelHostingView = contentView
+
+        let win = NSPanel(
+            contentRect: NSRect(x: 0, y: 0, width: 230, height: 250),
+            styleMask: [.titled, .nonactivatingPanel],
+            backing: .buffered,
+            defer: false
+        )
+
+        win.contentView = contentView
+        win.isFloatingPanel = true
+        win.level = .floating
+        win.hidesOnDeactivate = true
+        win.delegate = self
+        win.center()
+
+        self.panel = win
+        win.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    func windowDidResignKey(_ notification: Notification) {
+        if let win = notification.object as? NSPanel, win == panel {
+            panel?.orderOut(nil)
+            panel = nil
+            panelHostingView = nil
+        }
     }
 }

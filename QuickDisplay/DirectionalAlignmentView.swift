@@ -27,7 +27,7 @@ struct DirectionalAlignmentView: View {
             }
         }
         .padding()
-        .frame(width: 280, height: 280)
+        .frame(width: 230, height: 200)
     }
 
     var alignmentUI: some View {
