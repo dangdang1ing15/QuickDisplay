@@ -9,11 +9,13 @@ import SwiftUI
 
 @main
 struct QuickDisplayApp: App {
-        @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-        var body: some Scene {
-            Settings {
-                EmptyView()
-            }
-        }
+    init() {
+        LoginItemManager.registerIfNeeded()
+    }
+
+    var body: some Scene {
+        Settings { EmptyView() }
+    }
 }

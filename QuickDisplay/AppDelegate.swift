@@ -7,12 +7,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
+        
+        LoginItemManager.registerIfNeeded()
+
 
         // 메뉴바 아이템 생성
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
         if let button = statusItem?.button {
-            button.image = NSImage(systemSymbolName: "display", accessibilityDescription: "Display Manager")
+            button.image = NSImage(systemSymbolName: "display.2", accessibilityDescription: "Display Manager")
             button.action = #selector(togglePopover(_:))
             button.target = self
         }

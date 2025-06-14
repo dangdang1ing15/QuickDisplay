@@ -23,4 +23,18 @@ enum LoginItemManager {
         guard #available(macOS 13.0, *) else { return false }
         return SMAppService.mainApp.status == .enabled
     }
+    
+    static func registerIfNeeded() {
+           guard #available(macOS 13.0, *) else { return }
+
+           let service = SMAppService.mainApp
+           if service.status != .enabled {
+               do {
+                   try service.register()
+                   os_log("✅ 처음 실행 시 자동 등록 완료")
+               } catch {
+                   os_log("❌ 초기 자동 등록 실패: %@", "\(error)")
+               }
+           }
+       }
 }
