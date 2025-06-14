@@ -2,32 +2,25 @@ import ServiceManagement
 import os.log
 
 enum LoginItemManager {
-    static let helperID = "ElianisBack.QuickDisplayHelper"
-
     static func setLoginItem(enabled: Bool) {
+        guard #available(macOS 13.0, *) else { return }
+
         do {
-            let service = SMAppService.loginItem(identifier: helperID)
+            let service = SMAppService.mainApp
             if enabled {
                 try service.register()
-                os_log("✅ 로그인 아이템 등록됨")
+                os_log("✅ 메인 앱이 로그인 항목으로 등록됨")
             } else {
                 try service.unregister()
-                os_log("🚫 로그인 아이템 등록 해제됨")
+                os_log("🚫 메인 앱이 로그인 항목에서 제거됨")
             }
         } catch {
-            os_log("❌ 로그인 아이템 설정 실패: %@", "\(error)")
+            os_log("❌ 로그인 항목 설정 실패: %@", "\(error)")
         }
     }
 
     static func isLoginItemEnabled() -> Bool {
-        let service = SMAppService.loginItem(identifier: helperID)
-        return service.status == .enabled
-    }
-
-    static func registerIfNeeded() {
-        let service = SMAppService.loginItem(identifier: helperID)
-        if service.status != .enabled {
-            try? service.register()
-        }
+        guard #available(macOS 13.0, *) else { return false }
+        return SMAppService.mainApp.status == .enabled
     }
 }

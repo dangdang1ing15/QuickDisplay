@@ -33,6 +33,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
                 WindowPresenter.shared.showAlignmentWindow()
             }
         })
+        
+        DispatchQueue.main.async {
+            NSApp.activate(ignoringOtherApps: true) // ✅ 메뉴바 아이콘 활성화 강제
+        }
     }
 
     @objc func togglePopover(_ sender: Any?) {

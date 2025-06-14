@@ -28,8 +28,9 @@ struct AutoLaunchToggleView: View {
             .onChange(of: autoLaunchEnabled) { newValue in
                 LoginItemManager.setLoginItem(enabled: newValue)
             }
-            .padding()
-            .onAppear {}
+            .onAppear {
+                autoLaunchEnabled = LoginItemManager.isLoginItemEnabled()
+            }
     }
 }
 
