@@ -1,5 +1,6 @@
 import Cocoa
 import SwiftUI
+import ServiceManagement
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
     var statusItem: NSStatusItem?
@@ -7,9 +8,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
-        
-        LoginItemManager.registerIfNeeded()
 
+        // ✅ 최초 실행 시 자동 실행 여부 묻기
+        if !UserDefaults.standard.bool(forKey: "hasAskedLaunchAtLogin") {
+            askLaunchAtLoginConsent()
+        }
 
         // 메뉴바 아이템 생성
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
@@ -28,18 +31,38 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         popover?.delegate = self
         popover?.contentViewController = NSHostingController(rootView: PopoverContentView())
 
-        statusItem?.menu = nil
-
-        // 외장 디스플레이 연결 감지 시작
+        // 외장 디스플레이 감지 시작
         DisplayMonitor.shared.startMonitoring(openView: {
             DispatchQueue.main.async {
                 WindowPresenter.shared.showAlignmentWindow()
             }
         })
-        
+
         DispatchQueue.main.async {
-            NSApp.activate(ignoringOtherApps: true) // ✅ 메뉴바 아이콘 활성화 강제
+            NSApp.activate(ignoringOtherApps: true)
         }
+    }
+
+    /// 사용자에게 자동 실행 여부 묻기
+    func askLaunchAtLoginConsent() {
+        let alert = NSAlert()
+        alert.messageText = "앱을 로그인 시 자동으로 실행할까요?"
+        alert.informativeText = "이 설정은 나중에 변경할 수 있습니다."
+        alert.addButton(withTitle: "허용")
+        alert.addButton(withTitle: "허용 안 함")
+
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            do {
+                let loginItem = try SMAppService.loginItem(identifier: "com.elianisback.QuickDisplayHelper") // ✅ 헬퍼 번들 ID 확인
+                try loginItem.register()
+                print("✅ 로그인 아이템 등록 완료")
+            } catch {
+                print("❌ 로그인 아이템 등록 실패: \(error)")
+            }
+        }
+
+        UserDefaults.standard.set(true, forKey: "hasAskedLaunchAtLogin")
     }
 
     @objc func togglePopover(_ sender: Any?) {
@@ -52,7 +75,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
         }
     }
 
-    // 팝오버 닫힘 허용
     func popoverShouldClose(_ popover: NSPopover) -> Bool {
         return true
     }
