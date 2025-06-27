@@ -12,7 +12,6 @@ struct QuickDisplayApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     init() {
-        LoginItemManager.registerIfNeeded()
     }
 
     var body: some Scene {
